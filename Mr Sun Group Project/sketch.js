@@ -1,3 +1,7 @@
+// MR SUN (OPTICAL ILLUSION?)
+
+// WORKED ON WITH MO
+
 var xPos;
 var yPos;
 var r;
@@ -23,7 +27,7 @@ function draw() {
 
 function myShape(xPos, yPos){
 
-	// FADING ARRAY OF GREEN SPOTS
+	// FADING ARRAY OF GREEN SPOTS by MO
 
 	for(var j = 0; j < 10; j++){
 
@@ -43,7 +47,7 @@ function myShape(xPos, yPos){
 		}
 	}
 
-	// ROTATING ELLIPSES
+	// ROTATING ELLIPSES by KEVIN
 
 	push();
 
@@ -61,20 +65,20 @@ function myShape(xPos, yPos){
 
     pop();
 
-    // SUN BODY
+    // SUN BODY by MO & KEVIN
 
 	fill(255,255,0);
 
 	ellipse(300,300,100,100);
 
-	// WHITE PARTS OF SUN
+	// WHITE PARTS OF SUN by MO & KEVIN
 
 	fill(255);
 
 	rect(285,285,20,40);
 	rect(315,285,20,40);
 
-	// BLACK PARTS OF SUN
+	// BLACK PARTS OF SUN by MO & KEVIN
 
 	fill(0);
 
