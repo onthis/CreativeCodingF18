@@ -1,8 +1,12 @@
-var ballX;
-var ballY;
-var levelNumber;
+//THE RED BALL GAME (the game of unfairness)
+//created by: Kevin Ferreira
+//Midterm Project
 
-var spike1X;
+var ballX;  //RED BALL X-COORDINATE
+var ballY;  //RED BALL Y-COORDINATE
+var levelNumber;  //LEVEL NUMBER COUNTER
+
+var spike1X;  //SPIKES 1-10 X-COORDINATES (FOR EACH LEVEL)
 var spike2X;
 var spike3X;
 var spike4X;
@@ -13,7 +17,7 @@ var spike8X;
 var spike9X;
 var spike10X;
 
-var spike1Y;
+var spike1Y;  //SPIKES 1-10 Y-COORDINATES (FOR EACH LEVEL)
 var spike2Y;
 var spike3Y;
 var spike4Y;
@@ -24,24 +28,31 @@ var spike8Y;
 var spike9Y;
 var spike10Y;
 
-var scrollingText;
-var textLine1;
+var textLine1;  //LINES OF TEXT 1-4
 var textLine2;
 var textLine3;
 var textLine4;
 
-var brick;
+var brick;  //VARIABLE FOR BRICK TO CHANGE COORDINATES
 
-var torch1;
+var torch1;  //VARIABLE FOR TORCHES 1-2 TO CHANGE COORDINATES
 var torch2;
 
 function setup(){
 
+  //INITIAL COORDINATES
+
+  //TORCHES
+
   torch1 = 175;
   torch2 = 375;
+
+  //RED BALL
   
   ballX = 30;
   ballY = 40;
+
+  //SPIKES
   
   spike1X = 100;
   spike2X = -50;
@@ -65,21 +76,30 @@ function setup(){
   spike9Y = 50;
   spike10Y = 0;
 
-  scrollingText = 0;
+  //SCROLLING TEXT
+
   textLine1 = 30;
   textLine2 = 60;
   textLine3 = 90;
   textLine4 = 120;
 
+  //BRICKS
+
   brick = 25;
   
+  //LEVEL NUMBER COUNTER
+
   levelNumber = 1;
+
+  //CREATING CANVAS
   createCanvas(500,50);
   background(200);
   
 }
 
 function draw(){
+
+  //BACKGROUND OF BRICKS
 
   background(200);
   fill(150);
@@ -122,11 +142,15 @@ function draw(){
   rect(450+brick,16.666666666,2,16.666666666);
   rect(500+brick,16.666666666,2,16.666666666);
 
+  //LEVEL SIGN
+
   fill(181, 101, 29);
   rect(7.5,2.5,70,25);
 
   fill(102, 61, 25);
   rect(37.5,27.5,10,25);
+
+  //TORCHES
 
   fill(165,42,42);
   rect(torch1,17.5,7.5,15);
@@ -140,11 +164,15 @@ function draw(){
   rect(torch1,10,7.5,5);
   rect(torch2,10,7.5,5);
 
+  //LEVEL COUNTER FOR SIGN
+
   fill(0);
   textSize(18);
   textStyle(BOLD);
   text("Level " + levelNumber, 12, 21.5);
   textStyle(NORMAL);
+
+  //RED BALL
 
   fill(220,20,60);
   noStroke();
@@ -161,6 +189,8 @@ function draw(){
     ballX = 0;
   }
 
+  //SPIKES
+
   fill(100);
   triangle(spike1X,spike1Y,spike1X+20,spike1Y,spike1X+10,30);
   triangle(spike2X,spike2Y,spike2X+20,spike2Y,spike2X+10,20);
@@ -172,6 +202,8 @@ function draw(){
   triangle(spike8X,spike8Y,spike8X+20,spike8Y,spike8X+10,20);
   triangle(spike9X,spike9Y,spike9X+20,spike9Y,spike9X+10,30);
   triangle(spike10X,spike10Y,spike10X+20,spike10Y,spike10X+10,20);
+
+  //TITLE SCREEN/LEVEL 1
   
   if (levelNumber == 1){
     brick = 25;
@@ -196,6 +228,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 2 (random spikes, message 2)
   
   if (levelNumber == 2){
     brick = 0;
@@ -216,6 +250,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 3 (random spikes, message 3)
   
   if (levelNumber == 3){
     brick = 25;
@@ -237,6 +273,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 4 (random spikes, message 4)
   
   if (levelNumber == 4){
     brick = 0;
@@ -259,6 +297,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 5 (random spikes, message 5)
   
   if (levelNumber == 5){
     brick = 25;
@@ -282,6 +322,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 6 (random spikes, message 6)
   
   if (levelNumber == 6){
     brick = 0;
@@ -306,6 +348,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 7 (random spikes, message 7)
   
   if (levelNumber == 7){
     brick = 25;
@@ -331,6 +375,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 8 (random spikes, message 8)
   
   if (levelNumber == 8){
     brick = 0;
@@ -357,6 +403,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 9 (random spikes, message 9)
   
   if (levelNumber == 9){
     brick = 25;
@@ -384,6 +432,8 @@ function draw(){
       torch2 = random(300,480);
     }
   }
+
+  //LEVEL 10 (congratulations screen)
   
   if (levelNumber == 10){
     brick = 0;
@@ -391,6 +441,10 @@ function draw(){
       winScreen();
     }
   }
+
+  //SPIKE CONSTRAINTS FOR RED BALL
+
+  //SPIKE 1
   
   if ((ballX-10) < (spike1X+20) && (ballX+10) > (spike1X+20) && ballY == (spike1Y-10)){
     gameOver();
@@ -398,6 +452,8 @@ function draw(){
   if ((ballX+10) > (spike1X) && (ballX-10) < (spike1X) && ballY == (spike1Y-10)){
     gameOver();
   }
+
+  //SPIKE 2
   
   if ((ballX-10) < (spike2X+20) && (ballX+10) > (spike2X+20) && ballY == (spike2Y+10)){
     gameOver();
@@ -405,6 +461,8 @@ function draw(){
   if ((ballX+10) > (spike2X) && (ballX-10) < (spike2X) && ballY == (spike2Y+10)){
     gameOver();
   }
+
+  //SPIKE 3
   
   if ((ballX-10) < (spike3X+20) && (ballX+10) > (spike3X+20) && ballY == (spike3Y-10)){
     gameOver();
@@ -412,6 +470,8 @@ function draw(){
   if ((ballX+10) > (spike3X) && (ballX-10) < (spike3X) && ballY == (spike3Y-10)){
     gameOver();
   }
+
+  //SPIKE 4
   
   if ((ballX-10) < (spike4X+20) && (ballX+10) > (spike4X+20) && ballY == (spike4Y+10)){
     gameOver();
@@ -419,6 +479,8 @@ function draw(){
   if ((ballX+10) > (spike4X) && (ballX-10) < (spike4X) && ballY == (spike4Y+10)){
     gameOver();
   }
+
+  //SPIKE 5
   
   if ((ballX-10) < (spike5X+20) && (ballX+10) > (spike5X+20) && ballY == (spike5Y-10)){
     gameOver();
@@ -426,6 +488,8 @@ function draw(){
   if ((ballX+10) > (spike5X) && (ballX-10) < (spike5X) && ballY == (spike5Y-10)){
     gameOver();
   }
+
+  //SPIKE 6
   
   if ((ballX-10) < (spike6X+20) && (ballX+10) > (spike6X+20) && ballY == (spike6Y+10)){
     gameOver();
@@ -433,6 +497,8 @@ function draw(){
   if ((ballX+10) > (spike6X) && (ballX-10) < (spike6X) && ballY == (spike6Y+10)){
     gameOver();
   }
+
+  //SPIKE 7
   
   if ((ballX-10) < (spike7X+20) && (ballX+10) > (spike7X+20) && ballY == (spike7Y-10)){
     gameOver();
@@ -440,6 +506,8 @@ function draw(){
   if ((ballX+10) > (spike7X) && (ballX-10) < (spike7X) && ballY == (spike7Y-10)){
     gameOver();
   }
+
+  //SPIKE 8
   
   if ((ballX-10) < (spike8X+20) && (ballX+10) > (spike8X+20) && ballY == (spike8Y+10)){
     gameOver();
@@ -447,6 +515,8 @@ function draw(){
   if ((ballX+10) > (spike8X) && (ballX-10) < (spike8X) && ballY == (spike8Y+10)){
     gameOver();
   }
+
+  //SPIKE 9
   
   if ((ballX-10) < (spike9X+20) && (ballX+10) > (spike9X+20) && ballY == (spike9Y-10)){
     gameOver();
@@ -454,6 +524,8 @@ function draw(){
   if ((ballX+10) > (spike9X) && (ballX-10) < (spike9X) && ballY == (spike9Y-10)){
     gameOver();
   }
+
+  //SPIKE 10
   
   if ((ballX-10) < (spike10X+20) && (ballX+10) > (spike10X+20) && ballY == (spike10Y+10)){
     gameOver();
@@ -461,6 +533,8 @@ function draw(){
   if ((ballX+10) > (spike10X) && (ballX-10) < (spike10X) && ballY == (spike10Y+10)){
     gameOver();
   }
+
+  //LEVEL 1 (random spike for switching sides)
   
   if (levelNumber == 1){
     if (keyIsDown(UP_ARROW)){
@@ -476,6 +550,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 2 (random spikes for switching sides)
   
   if (levelNumber == 2){
     if (keyIsDown(UP_ARROW)){
@@ -493,6 +569,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 3 (random spikes for switching sides)
   
   if (levelNumber == 3){
     if (keyIsDown(UP_ARROW)){
@@ -512,6 +590,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 4 (random spikes for switching sides)
   
   if (levelNumber == 4){
     if (keyIsDown(UP_ARROW)){
@@ -533,6 +613,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 5 (random spikes for switching sides)
 
   if (levelNumber == 5){
     if (keyIsDown(UP_ARROW)){
@@ -556,6 +638,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 6 (random spikes for switching sides)
   
   if (levelNumber == 6){
     if (keyIsDown(UP_ARROW)){
@@ -581,7 +665,9 @@ function draw(){
       }
     }
   }
- 
+
+  //LEVEL 7 (random spikes for switching sides) 
+
   if (levelNumber == 7){
     if (keyIsDown(UP_ARROW)){
       if (ballY == 40){
@@ -608,6 +694,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 8 (random spikes for switching sides)
   
   if (levelNumber == 8){
     if (keyIsDown(UP_ARROW)){
@@ -637,6 +725,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 9 (random spikes for switching sides)
   
   if (levelNumber == 9){
     if (keyIsDown(UP_ARROW)){
@@ -668,6 +758,8 @@ function draw(){
       }
     }
   }
+
+  //LEVEL 10 (random spikes for switching sides)
   
   if (levelNumber == 10){
     if (keyIsDown(UP_ARROW)){
@@ -703,11 +795,13 @@ function draw(){
   }
 }
 
-function mousePressed(){
+function mousePressed(){  //RESET GAME WITH MOUSE CLICK
   setup();
 }
 
-function gameOver(){
+function gameOver(){  //GAME OVER SCREEN
+
+  //SCROLLING HAHAHAHAHAHAHAHAHAHAHA
 
   background(0);
   fill(255);
@@ -734,12 +828,16 @@ function gameOver(){
     textLine4 = textLine3+30;
   }
 
+  //TRY AGAIN BUTTON
+
   fill(255);
   rect(200,10,95,30);
 
   fill(0);
   textSize(15);
   text("try again?",215,30);
+
+  //CONSTRAINTS TO KEEP BALL IN PLACE
 
   spike1X = ballX;
   spike2X = ballX;
@@ -754,7 +852,7 @@ function gameOver(){
 
 }
 
-function winScreen(){
+function winScreen(){  //CONGRATULATIONS SCREEN
   background(0);
   fill(255);
   text("wow, you actually won",150,20);
