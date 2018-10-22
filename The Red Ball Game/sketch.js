@@ -141,8 +141,10 @@ function draw(){
   rect(torch2,10,7.5,5);
 
   fill(0);
-  textSize(20);
-  text("Level " + levelNumber, 10, 21.5);
+  textSize(18);
+  textStyle(BOLD);
+  text("Level " + levelNumber, 12, 21.5);
+  textStyle(NORMAL);
 
   fill(220,20,60);
   noStroke();
@@ -199,9 +201,9 @@ function draw(){
     brick = 0;
     if (ballX <= 50){
       background(0);
-      textSize(20);
+      textSize(15);
       fill(255);
-      text("ARE YOU REALLY STILL TRYING?",75,30);
+      text("YOU DON'T KNOW WHAT YOU GOT YOURSELF INTO.",50,30);
     }
     if (ballX >= 500){
       ballX = 0;
@@ -287,7 +289,7 @@ function draw(){
       background(0);
       textSize(20);
       fill(255);
-      text("WOW YOU'RE REALLY TRYING, THAT'S FUNNY.",25,30);
+      text("CONGRATULATIONS! YOU WON!",100,30);
     }
     if (ballX >= 500){
       ballX = 0;
@@ -311,7 +313,7 @@ function draw(){
       background(0);
       textSize(20);
       fill(255);
-      text("YOU ACTUALLY THINK, YOU'RE GOING TO BEAT ME?",25,30);
+      text("YEAH... JUST KIDDING.",100,30);
     }
     if (ballX >= 500){
       ballX = 0;
@@ -334,7 +336,7 @@ function draw(){
     brick = 0;
     if (ballX <= 50){
       background(0);
-      textSize(20);
+      textSize(15);
       fill(255);
       text("REACHING THE END? YEAH, I DON'T THINK SO.",50,30);
     }
@@ -362,7 +364,7 @@ function draw(){
       background(0);
       textSize(20);
       fill(255);
-      text("JUST STOP ALREADY, THIS IS SAD...",75,30);
+      text("JUST STOP ALREADY, THIS IS SAD...",50,30);
     }
     if (ballX >= 500){
       ballX = 0;
@@ -733,15 +735,22 @@ function gameOver(){
   }
 
   fill(255);
-  rect(150,10,200,30);
+  rect(200,10,95,30);
 
   fill(0);
   textSize(15);
   text("try again?",215,30);
 
-  ballX = spike1X;
-  ballY = spike1Y-10;
+  spike1X = ballX;
   spike2X = ballX;
+
+  if (ballX > spike1X){
+    ballX = spike1X;
+  }
+
+  if (ballX < spike1X){
+    ballX = spike1X;
+  }
 
 }
 
